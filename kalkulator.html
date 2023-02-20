@@ -1,72 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <label for="input1">Input nilai 1:</label>
-    <input type="text" placeholder="masukan inputan angka 1" id="input1"><br><br>
-  <label>input nilai 2:</label>
-    <input type="text" placeholder="masukan inputan angka 2" id="input2"><br><br>
-  <label>Pilih fungsi:</label><br>
-    <input type="radio" name="operator" id="tambah" onclick="tambah()">tambah<br>
-    <input type="radio" name="operator" id="kurang" onclick="kurang()">kurang<br>
-    <input type="radio" name="operator" id="kali" onclick="kali()">kali<br>
-    <input type="radio" name="operator" id="bagi" onclick="bagi()">bagi<br><br>
-  <label>Hasil:</label>
-    <input type="text" id="hasil" disabled>
+    <br><br>
+    <label for="input1">input nilai 1:</label>
+    <input type="number" placeholder="input angka pertama" id="input1">
+        
+    <br><br>
+
+    <label for="input2"> nilai input 2:</label>
+    <input type="number" placeholder="Input angka kedua" id="input2">
+        
+    <br><br>
+
+    <label>Pilih fungsi:</label>
+    <br>
+    <input type="radio" name="operator" id="Tambah" onclick="Tambah()"> > Tambah (+)
+    <br>
+    <input type="radio" name="operator" id="Kurang" onclick="Kurang()"> > Kurang (-)
+    <br>
+    <input type="radio" name="operator" id="Kali"   onclick="kali()"> > Kali (x)
+    <br>
+    <input type="radio" name="operator" id="Bagi"   onclick="Bagi()"> > Bagi (:)
+                
+    <br><br>
+
+    <label>Hasil:</label>
+    <input type="text" id="Hasil" disabled>
+    <input type="button" value="RESET" onclick="resetAngka()">
+
     <script>
-      function ambilNilai()
-      {
-        nilaiSatu = document.getElementById('input1').value;
-        nilaiDua = document.getElementById('input2').value;
-        if (nilaiSatu == '' || nilaiDua == '')
+
+        function ambilNilai()
         {
-          return alert('Nilai harus terisi');
-        } else {
-          nilai = [nilaiSatu,nilaiDua];
-          return nilai;
+            nilaiSatu = document.getElementById("input1").value;
+            nilaiDua = document.getElementById("input2").value;
+            if (nilaiSatu == "" || nilaiDua == "")
+            {
+                return alert ("nilai harus terisi")
+            }
+            else 
+            {
+                nilai = [nilaiSatu,nilaiDua];
+                return nilai;
+            }
+            
         }
-      }
 
-      function printHasil(output)
-      {
-        hasil = document.getElementById('hasil');
-        return hasil.value = output;
-      }
-
-      function tambah()
-      {
-        let nilai = ambilNilai();
-        let prosesTambah = 0;
-        for (let a = 0; a < nilai.length; a++)
+        function printHasil(output)
         {
-          prosesTambah += parseInt(nilai[a]);
+            hasil = document.getElementById("Hasil");
+            return hasil.value = output;
         }
-        // console.log(prosesTambah);
-        return printHasil(prosesTambah);
-      }
 
-      function kurang()
-      {
-        nilai = ambilNilai();
-        console.log(nilai);
-      }
+        function resetAngka()
+        {
+            document.getElementById("input1").value = '';
+            document.getElementById("input2").value = '';
+            document.getElementById("Hasil").value = '';
+            document.getElementById("Tambah").checked = false;
+            document.getElementById("Kurang").checked = false;
+            document.getElementById("Kali").checked = false;
+            document.getElementById("Bagi").checked = false;
+            
+        }
 
-      function kali()
-      {
-        nilai = ambilNilai();
-        console.log(nilai);
-      }
+        function Tambah()
+        {
+            let nilai = ambilNilai();
+            prosesTambah = parseInt(nilai[0]) + parseInt(nilai[1])
+            return printHasil(prosesTambah);
+        }
 
-      function bagi()
-      {
-        nilai = ambilNilai();
-        console.log(nilai);
-      }
+
+        function Kurang()
+        {
+            nilai = ambilNilai();
+            prosesKurang = parseInt(nilai[0]) - parseInt(nilai[1])
+            return printHasil(prosesKurang);
+        }
+
+
+        function kali()
+        {
+            nilai = ambilNilai();
+            prosesKali = parseInt(nilai[0]) * parseInt(nilai[1])
+            return printHasil(prosesKali);
+        }
+
+
+        function Bagi()
+        {
+            nilai = ambilNilai();
+            prosesBagi = parseInt(nilai[0]) / parseInt(nilai[1])
+            return printHasil(prosesBagi);
+        }
+
     </script>
+
+
 </body>
 </html>
