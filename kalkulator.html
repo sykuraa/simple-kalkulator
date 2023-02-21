@@ -27,7 +27,14 @@
     <input type="radio" name="operator" id="Kali"   onclick="kali()"> > Kali (x)
     <br>
     <input type="radio" name="operator" id="Bagi"   onclick="Bagi()"> > Bagi (:)
-                
+    <br>
+    <input type="radio" name="operator" id="Modulus"   onclick="Modulus()"> > Modulus ( SisaBagi )
+    <br>
+    <input type="radio" name="operator" id="Pangkat" onclick="Pangkat()"> > Pangkat ( ^ )
+    <br>
+    <input type="radio" name="operator" id="Persen" onclick="Persen()"> > Persen ( % )
+    
+
     <br><br>
 
     <label>Hasil:</label>
@@ -60,9 +67,9 @@
 
         function resetAngka()
         {
-            document.getElementById("input1").value = '';
-            document.getElementById("input2").value = '';
-            document.getElementById("Hasil").value = '';
+            document.getElementById("input1").value = "";
+            document.getElementById("input2").value = "";
+            document.getElementById("Hasil").value =  "";
             document.getElementById("Tambah").checked = false;
             document.getElementById("Kurang").checked = false;
             document.getElementById("Kali").checked = false;
@@ -72,11 +79,10 @@
 
         function Tambah()
         {
-            let nilai = ambilNilai();
+            nilai = ambilNilai();
             prosesTambah = parseInt(nilai[0]) + parseInt(nilai[1])
             return printHasil(prosesTambah);
         }
-
 
         function Kurang()
         {
@@ -85,7 +91,6 @@
             return printHasil(prosesKurang);
         }
 
-
         function kali()
         {
             nilai = ambilNilai();
@@ -93,12 +98,32 @@
             return printHasil(prosesKali);
         }
 
-
         function Bagi()
         {
             nilai = ambilNilai();
             prosesBagi = parseInt(nilai[0]) / parseInt(nilai[1])
             return printHasil(prosesBagi);
+        }
+
+        function Modulus()
+        {
+            nilai = ambilNilai();
+            prosesSisa = parseInt(nilai[0]) % parseInt(nilai[1])
+            return printHasil(prosesSisa);
+        }
+
+        function Pangkat()
+        {
+            nilai = ambilNilai();
+            prosesPangkat = Math.pow(parseInt(nilai[0]), parseInt(nilai[1]))
+            return printHasil(prosesPangkat);
+        }
+
+        function Persen()
+        {
+            nilai = ambilNilai();
+            prosesPersen = parseFloat(nilai[0]) * (nilai[1]) / 100;
+            return printHasil(prosesPersen);
         }
 
     </script>
